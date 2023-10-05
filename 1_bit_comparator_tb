@@ -1,0 +1,36 @@
+///100 days of RTL///
+
+///Abilash P///
+ 
+///1 bit comparator///
+
+module bit_1_comp_tb();
+
+reg  a_in, b_in;
+
+wire a_less_b, a_great_b, a_equal_b;
+
+
+bit_1_comp DUT(.a_in(a_in), .b_in(b_in), .a_less_b(a_less_b), .a_great_b(a_great_b), .a_equal_b(a_equal_b));
+
+integer i;
+
+initial 
+begin
+  a_in = 1'b0;
+  b_in = 1'b0;
+end
+
+initial
+begin
+  for(i=0; i<4; i=i+1)
+  begin
+    {a_in,b_in} = i;
+    #20;
+  end
+end
+
+initial
+$monitor("Input a_in = %b----Input b_in = %b----A_less_than_B = %b----A_greater_than = %b---- A_equal_B = %b",
+          a_in, b_in, a_less_b, a_great_b, a_equal_b);
+endmodule
